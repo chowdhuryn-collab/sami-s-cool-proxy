@@ -3,153 +3,124 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VOID GAMES</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing:border-box; }
 
 body {
-  margin: 0;
-  background: #090b12;
-  color: white;
-  font-family: Arial, sans-serif;
+  margin:0;
+  background:#090b12;
+  color:white;
+  font-family:Arial,sans-serif;
 }
 
 header {
-  background: #111522;
-  padding: 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #252c40;
+  background:#111522;
+  padding:22px;
+  border-bottom:1px solid #292f42;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo {
-  font-size: 26px;
-  font-weight: bold;
-  color: #8b5cf6;
+  color:#8b5cf6;
+  font-size:26px;
+  font-weight:bold;
 }
 
-.logo span {
-  color: white;
-}
+.logo span {color:white;}
 
 .hero {
-  text-align: center;
-  padding: 45px 15px 25px;
+  text-align:center;
+  padding:40px 15px;
 }
 
-.hero h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
+.hero h1 {font-size:42px;}
 
-.hero p {
-  color: #929bb0;
+.hero p {color:#929bb0;}
+
+.container {
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
 }
 
 input {
-  background: #171c2b;
-  border: 1px solid #343c52;
-  color: white;
-  padding: 14px;
-  width: 85%;
-  max-width: 450px;
-  border-radius: 10px;
-  outline: none;
-  font-size: 16px;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
-
-h2 {
-  margin-top: 30px;
-}
-
-.games {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 18px;
-}
-
-.game {
-  background: #151a29;
-  border: 1px solid #292f42;
-  border-radius: 15px;
-  padding: 22px;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.game:hover {
-  transform: translateY(-5px);
-  border-color: #8b5cf6;
-  background: #20263a;
-}
-
-.emoji {
-  font-size: 45px;
-}
-
-.game h3 {
-  margin-bottom: 7px;
-}
-
-.game p {
-  color: #929bb0;
-  font-size: 13px;
+  background:#171c2b;
+  color:white;
+  border:1px solid #343c52;
+  border-radius:9px;
+  padding:14px;
+  font-size:16px;
+  outline:none;
 }
 
 button {
-  background: #8b5cf6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  cursor: pointer;
-  font-weight: bold;
+  background:#8b5cf6;
+  color:white;
+  border:0;
+  padding:12px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-button:hover {
-  background: #7041df;
+button:hover {background:#7041df;}
+
+.search-box {
+  display:flex;
+  gap:10px;
+  max-width:650px;
+  margin:20px auto;
 }
+
+.search-box input {flex:1;min-width:0;}
+
+.games {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+}
+
+.game {
+  background:#151a29;
+  border:1px solid #292f42;
+  border-radius:15px;
+  padding:22px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.game:hover {
+  transform:translateY(-5px);
+  border-color:#8b5cf6;
+}
+
+.game p {color:#929bb0;}
+
+.emoji {font-size:45px;}
 
 #playArea {
-  display: none;
-  text-align: center;
-  background: #151a29;
-  border: 1px solid #343c52;
-  border-radius: 15px;
-  padding: 25px;
-  margin-top: 25px;
+  display:none;
+  background:#151a29;
+  border:1px solid #343c52;
+  border-radius:15px;
+  padding:25px;
+  text-align:center;
+  margin-top:25px;
 }
 
-#playArea button {
-  margin: 5px;
-}
-
-#gameContent {
-  margin-top: 20px;
-  min-height: 150px;
-}
-
-.big {
-  font-size: 35px;
-  font-weight: bold;
-}
+#gameContent {margin-top:20px;min-height:150px;}
 
 footer {
-  text-align: center;
-  padding: 35px;
-  color: #606a80;
+  text-align:center;
+  padding:35px;
+  color:#606a80;
 }
+
 </style>
 </head>
 
@@ -162,40 +133,51 @@ footer {
 
 <section class="hero">
   <h1>ENTER THE VOID.</h1>
-  <p>Your mini gaming universe.</p>
-  <br>
-  <input
-    id="search"
-    placeholder="🔍 Search games..."
-    oninput="searchGames()"
-  >
+  <p>Games, searches, and entertainment.</p>
+
+  <form class="search-box"
+        action="https://duckduckgo.com/"
+        method="GET"
+        target="_blank">
+
+    <input
+      name="q"
+      type="search"
+      placeholder="🔎 Search DuckDuckGo..."
+      required
+    >
+
+    <button type="submit">SEARCH</button>
+  </form>
+
+  <p>Powered by DuckDuckGo 🦆</p>
 </section>
 
 <div class="container">
 
 <h2>🔥 Featured Games</h2>
 
-<div class="games" id="games">
+<div class="games">
 
-  <div class="game" data-name="clicker" onclick="startGame('clicker')">
+  <div class="game" onclick="startGame('clicker')">
     <div class="emoji">🖱️</div>
     <h3>Clicker</h3>
-    <p>Click as fast as you can!</p>
+    <p>Click to earn points!</p>
   </div>
 
-  <div class="game" data-name="guess number" onclick="startGame('guess')">
+  <div class="game" onclick="startGame('guess')">
     <div class="emoji">🔢</div>
     <h3>Number Guess</h3>
     <p>Find the secret number.</p>
   </div>
 
-  <div class="game" data-name="tic tac toe" onclick="startGame('tic')">
+  <div class="game" onclick="startGame('tic')">
     <div class="emoji">❌</div>
     <h3>Tic-Tac-Toe</h3>
-    <p>Challenge yourself!</p>
+    <p>Play against yourself.</p>
   </div>
 
-  <div class="game" data-name="reaction test" onclick="startGame('reaction')">
+  <div class="game" onclick="startGame('reaction')">
     <div class="emoji">⚡</div>
     <h3>Reaction Test</h3>
     <p>Test your reaction speed.</p>
@@ -204,83 +186,73 @@ footer {
 </div>
 
 <div id="playArea">
-  <h2 id="gameTitle">Game</h2>
-  <button onclick="closeGame()">✖ CLOSE GAME</button>
+  <h2 id="gameTitle">GAME</h2>
+  <button onclick="closeGame()">CLOSE GAME ✖</button>
   <div id="gameContent"></div>
 </div>
 
 </div>
 
 <footer>
-  VOID GAMES © 2026 · Made for gamers
+VOID GAMES © 2026
 </footer>
 
 <script>
-let clicks = 0;
-let secret = 0;
-let board = ["","","","","","","","",""];
-let turn = "X";
+
+let clicks=0;
+let secret=0;
+let board=[];
+let turn="X";
 let reactionTimer;
-let reactionStart;
-let reactionReady = false;
-
-function searchGames() {
-  let value = document.getElementById("search").value.toLowerCase();
-
-  document.querySelectorAll(".game").forEach(game => {
-    game.style.display =
-      game.dataset.name.includes(value) ? "" : "none";
-  });
-}
+let reactionStart=0;
+let reactionReady=false;
 
 function startGame(game) {
-  const area = document.getElementById("playArea");
-  const content = document.getElementById("gameContent");
+  const area=document.getElementById("playArea");
+  const content=document.getElementById("gameContent");
 
-  area.style.display = "block";
+  area.style.display="block";
   area.scrollIntoView({behavior:"smooth"});
 
-  if (game === "clicker") {
-    clicks = 0;
-    document.getElementById("gameTitle").innerText = "🖱️ CLICKER";
+  if(game==="clicker") {
+    clicks=0;
+    document.getElementById("gameTitle").innerText="🖱️ CLICKER";
 
-    content.innerHTML = `
-      <p>Click the button to earn points!</p>
-      <div class="big" id="score">0</div>
+    content.innerHTML=`
+      <h1 id="score">0</h1>
       <button onclick="addClick()">CLICK ME!</button>
       <button onclick="clicks=0;updateScore()">RESET</button>
     `;
   }
 
-  if (game === "guess") {
-    secret = Math.floor(Math.random()*100)+1;
-    document.getElementById("gameTitle").innerText = "🔢 NUMBER GUESS";
+  if(game==="guess") {
+    secret=Math.floor(Math.random()*100)+1;
+    document.getElementById("gameTitle").innerText="🔢 NUMBER GUESS";
 
-    content.innerHTML = `
+    content.innerHTML=`
       <p>Guess a number between 1 and 100.</p>
       <input id="guessInput" type="number" placeholder="Your guess">
-      <br><br>
       <button onclick="checkGuess()">GUESS</button>
       <p id="guessMessage">Good luck!</p>
     `;
   }
 
-  if (game === "tic") {
-    board = ["","","","","","","","",""];
-    turn = "X";
-    document.getElementById("gameTitle").innerText = "❌ TIC-TAC-TOE";
+  if(game==="tic") {
+    board=["","","","","","","","",""];
+    turn="X";
+    document.getElementById("gameTitle").innerText="❌ TIC-TAC-TOE";
     renderTic();
   }
 
-  if (game === "reaction") {
-    document.getElementById("gameTitle").innerText = "⚡ REACTION TEST";
-    reactionReady = false;
+  if(game==="reaction") {
+    clearTimeout(reactionTimer);
+    reactionReady=false;
 
-    content.innerHTML = `
-      <p>Wait for the green button, then click!</p>
-      <button id="reactionButton" onclick="reactionClick()">
-        START
-      </button>
+    document.getElementById("gameTitle").innerText="⚡ REACTION TEST";
+
+    content.innerHTML=`
+      <p>Wait for green, then click!</p>
+      <button id="reactionButton" onclick="reactionClick()">START</button>
       <p id="reactionMessage"></p>
     `;
   }
@@ -292,40 +264,31 @@ function addClick() {
 }
 
 function updateScore() {
-  document.getElementById("score").innerText = clicks;
+  document.getElementById("score").innerText=clicks;
 }
 
 function checkGuess() {
-  let guess = Number(document.getElementById("guessInput").value);
-  let message = document.getElementById("guessMessage");
+  let guess=Number(document.getElementById("guessInput").value);
+  let message=document.getElementById("guessMessage");
 
-  if (!guess || guess < 1 || guess > 100) {
-    message.innerText = "Enter a number from 1 to 100!";
-  } else if (guess === secret) {
-    message.innerText = "🎉 YOU GOT IT!";
-  } else if (guess < secret) {
-    message.innerText = "Too low! Try again.";
+  if(!guess || guess<1 || guess>100) {
+    message.innerText="Enter a number from 1 to 100!";
+  } else if(guess===secret) {
+    message.innerText="🎉 YOU GOT IT!";
+  } else if(guess<secret) {
+    message.innerText="Too low!";
   } else {
-    message.innerText = "Too high! Try again.";
+    message.innerText="Too high!";
   }
 }
 
 function renderTic() {
-  let content = document.getElementById("gameContent");
-
-  content.innerHTML = `
+  document.getElementById("gameContent").innerHTML=`
     <p>Turn: ${turn}</p>
-    <div style="
-      display:grid;
-      grid-template-columns:repeat(3,70px);
-      gap:5px;
-      justify-content:center;
-    ">
+    <div style="display:grid;grid-template-columns:repeat(3,70px);gap:5px;justify-content:center">
       ${board.map((v,i)=>`
-        <button
-          style="height:70px;font-size:25px"
-          onclick="ticMove(${i})"
-        >${v}</button>
+        <button style="height:70px;font-size:25px"
+        onclick="ticMove(${i})">${v}</button>
       `).join("")}
     </div>
     <p id="ticMessage"></p>
@@ -333,74 +296,73 @@ function renderTic() {
   `;
 }
 
-function ticMove(i) {
-  if (board[i] || checkWinner()) return;
-
-  board[i] = turn;
-
-  if (checkWinner()) {
-    renderTic();
-    document.getElementById("ticMessage").innerText =
-      turn + " WINS! 🎉";
-    return;
-  }
-
-  if (board.every(v=>v!=="")) {
-    renderTic();
-    document.getElementById("ticMessage").innerText = "DRAW!";
-    return;
-  }
-
-  turn = turn === "X" ? "O" : "X";
-  renderTic();
-}
-
 function checkWinner() {
-  const wins = [
+  const wins=[
     [0,1,2],[3,4,5],[6,7,8],
     [0,3,6],[1,4,7],[2,5,8],
     [0,4,8],[2,4,6]
   ];
 
-  return wins.some(([a,b,c]) =>
+  return wins.some(([a,b,c])=>
     board[a] && board[a]===board[b] && board[b]===board[c]
   );
 }
 
-function reactionClick() {
-  const button = document.getElementById("reactionButton");
-  const message = document.getElementById("reactionMessage");
+function ticMove(i) {
+  if(board[i] || checkWinner() || board.every(v=>v!=="")) return;
 
-  if (reactionReady) {
+  board[i]=turn;
+
+  if(checkWinner()) {
+    renderTic();
+    document.getElementById("ticMessage").innerText=turn+" WINS! 🎉";
+    return;
+  }
+
+  if(board.every(v=>v!=="")) {
+    renderTic();
+    document.getElementById("ticMessage").innerText="DRAW!";
+    return;
+  }
+
+  turn=turn==="X"?"O":"X";
+  renderTic();
+}
+
+function reactionClick() {
+  let button=document.getElementById("reactionButton");
+  let message=document.getElementById("reactionMessage");
+
+  if(reactionReady) {
+    let time=Date.now()-reactionStart;
+    reactionReady=false;
     clearTimeout(reactionTimer);
-    let time = Date.now() - reactionStart;
-    message.innerText = "Your reaction: " + time + " ms!";
-    button.innerText = "PLAY AGAIN";
-    button.style.background = "#8b5cf6";
-    reactionReady = false;
+    message.innerText="Your reaction: "+time+" ms!";
+    button.innerText="PLAY AGAIN";
+    button.style.background="#8b5cf6";
     return;
   }
 
   clearTimeout(reactionTimer);
-  reactionReady = false;
+  reactionReady=false;
+  button.innerText="WAIT...";
+  button.style.background="#b45309";
+  message.innerText="";
 
-  button.innerText = "WAIT...";
-  button.style.background = "#b45309";
-  message.innerText = "";
-
-  reactionTimer = setTimeout(() => {
-    button.innerText = "CLICK NOW!";
-    button.style.background = "#16a34a";
-    reactionStart = Date.now();
-    reactionReady = true;
-  }, 1500 + Math.random()*3000);
+  reactionTimer=setTimeout(()=>{
+    button.innerText="CLICK NOW!";
+    button.style.background="#16a34a";
+    reactionStart=Date.now();
+    reactionReady=true;
+  },1500+Math.random()*3000);
 }
 
 function closeGame() {
-  document.getElementById("playArea").style.display = "none";
+  document.getElementById("playArea").style.display="none";
   clearTimeout(reactionTimer);
-  reactionReady = false;
+  reactionReady=false;
 }
+
 </script>
 
 </body>
